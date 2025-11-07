@@ -1,0 +1,228 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff4f8;
+  color: #ff69b4;
+  text-align: center;
+}
+
+/* Section Layout */
+section {
+  display: none;
+  padding: 40px 20px;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+section.active {
+  display: flex;
+}
+
+/* Buttons */
+button, .btn {
+  background: linear-gradient(45deg, #ffb6c1, #ffd700);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hero */
+.title {
+  font-family: 'Dancing Script', cursive;
+  font-size: 38px;
+  color: #ff69b4;
+}
+
+.subtitle {
+  margin: 10px 0 25px;
+  color: #b14174;
+}
+
+.accent {
+  color: #ffd700;
+}
+
+/* Card & Shadow */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 5px 20px rgba(255, 182, 193, 0.4);
+}
+
+.shadow {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Slideshow */
+.slideshow {
+  /* Portrait-oriented slideshow container */
+  width: min(420px, 92%);
+  max-width: 420px;
+  aspect-ratio: 3 / 4; /* portrait (taller than wide) */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #fff;
+  position: relative;
+}
+
+.slideshow img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover; /* crop/center image to fill container */
+}
+
+.caption {
+  margin: 12px auto 0;
+  color: #b14174;
+  background: rgba(255, 249, 252, 0.9);
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+/* ini untuk gambar di dalam slideshow */
+.slideshow img {
+  height: 100%;
+  display: block;
+  object-fit: cover; /* crop/center image agar proporsional */
+}
+
+.caption {
+  margin-top: 10px;
+  color: #b14174;
+}
+
+.controls {
+  margin-top: 10px;
+}
+
+.chip {
+  background: linear-gradient(45deg, #ffb6c1, #ffd700);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ffd1dc;
+  opacity: 0.6;
+}
+
+.dot.active {
+  background-color: #ff69b4;
+  opacity: 1;
+}
+
+/* Secret Message */
+.secret {
+  margin: 20px auto;
+}
+
+.secret-cta {
+  border: 2px dashed #ff69b4;
+  border-radius: 15px;
+  padding: 20px;
+  background: #fff9fb;
+  font-weight: bold;
+  color: #b14174;
+  cursor: pointer;
+}
+
+.secret-msg {
+  color: #ff69b4;
+  animation: fadeIn 0.5s ease;
+}
+
+/* Final */
+.final h2 {
+  color: #ff69b4;
+  font-family: 'Dancing Script', cursive;
+  font-size: 34px;
+}
+
+.final p {
+  color: #b14174;
+}
+
+/* Floating Hearts */
+#hearts {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Back button (fixed, outside opening) */
+.back-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 999;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.heart {
+  position: absolute;
+  font-size: 18px;
+  animation: floatUp linear forwards;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 0.9; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Confetti */
+#confetti-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 22nd Birthday, Sayang 💖</title>
+
+  <!-- Font dan Style -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Canvas Confetti -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Hati Floating -->
+  <div id="hearts"></div>
+
+  <!-- Tombol Kembali (di luar section pembuka) -->
+  <button id="backButton" class="btn back-btn hidden">← Kembali</button>
+
+  <!-- 🌼 Halaman Pembuka -->
+  <section id="opening" class="active fade-in">
+    <div class="hero">
+      <h1 class="title">Happy 22nd Birthday,<br><span class="accent">My Ester 💕</span></h1>
+      <p class="subtitle">Dibuat sama abang sendiri teruntuk adek🎀</p>
+      <button id="startButton" class="btn pulse">ayok liat 🎉</button>
+    </div>
+  </section>
+
+  <!-- 📸 Galeri Kenangan -->
+  <section id="gallery" class="hidden">
+    <h1 class="title"> Flashback dikit</h1>
+    <div class="slideshow card shadow">
+      <img id="galleryImage" src="images/1.jpg" alt="Kenangan" />
+      <div class="dots" id="dots"></div>
+    </div>
+    <div class="caption"><span id="caption">First date 💕 — 12 Juni 2022</span></div>
+    <div class="controls">
+      <button id="prev" class="chip">◀</button>
+      <button id="next" class="chip">▶</button>
+    </div>
+    <button id="toMessage" class="btn">Next 💌</button>
+  </section>
+
+  <!-- 💌 Pesan Rahasia -->
+  <section id="message" class="hidden">
+    <div class="secret card shadow">
+      <div id="secretBox" class="secret-cta">Klik untuk buka pesan dari abang ganteng 💌</div>
+      <div id="revealedMessage" class="secret-msg hidden">
+        <p>HAIIIIIIIIIII ADEKU SAYANG</p>
+        <p>Kamu itu bukan cuma cantik, tapi juga punya hati yang paling lembut yang pernah aku miliki 💕</p>
+        <p>Dari pertama kali aku kenal kamu, rasanya hidup aku jadi lebih berwarna dan juga jadi lebih baik. Ada aja hal kecil yang bikin aku senyum tiap inget kamu.</p>
+        <p>Selamat ulang tahun ya, sayangku cintaku manisku pujaan hatiku kesayangan aku pacar aku istri aku 🥰 Hari ini spesial banget, karena dunia kedatangan orang paling berarti buat hidup aku.</p>
+        <p>Semoga di umur kamu yang baru ini, semua hal yang kamu impikan bisa pelan-pelan jadi nyata. Aku tahu kamu kuat, sabar, dan selalu berusaha jadi yang terbaik — dan abang selalu bangga sama kamu ❤️</p>
+        <p>Terima kasih udah mau bertahan, udah mau sabar sama aku yang kadang nyebelin. Kamu selalu bisa bikin abang ngerasa tenang walaupun lagi pusing banget.</p>
+        <p>Pokoknya, di setiap langkah yang kamu ambil nanti, jangan pernah lupa kalau ada aku di sini — yang bakal terus dukung, jagain, dan sayangin kamu sepenuh hati 💞</p>
+        <p>Selamat ulang tahun, adek manis! Semoga harinya penuh senyum, peluk hangat, dan hal-hal kecil yang bikin kamu bahagia. Aku sayang kamu, selalu ✨</p>
+
+      </div>
+    </div>
+    <button id="toSurprise" class="btn">Next 🎁</button>
+  </section>
+
+  <!-- 🎁 Kejutan Akhir -->
+  <section id="surprise" class="hidden">
+    <div class="final card shadow">
+      <h2>Selamat ulang tahun sayangku 💝</h2>
+      <p>maaf yaaa belum bisa bikin yang lebih bagus ueueueue dan cuma dikiiiit uhuhuhuh moga moga kamu seneng</p>
+      <p>Semoga semua harapanmu tercapai, sehat dan bahagia selalu ✨</p>
+      <a href="https://youtube.com/shorts/ZZY62UbgGzI?feature=share" target="_blank" class="btn">video dari aku 🎥</a>
+    </div>
+  </section>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
