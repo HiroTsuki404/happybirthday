@@ -18,6 +18,11 @@
   <!-- Hati Floating -->
   <div id="hearts"></div>
 
+  <!-- Audio background + toggle -->
+  <!-- autoplay muted allowed by browsers; we'll unmute after first user interaction -->
+  <audio id="bgAudio" src="music/bg-music.mp3" preload="auto" autoplay loop muted></audio>
+  <button id="musicToggle" class="btn music-btn" aria-pressed="false" title="Play/Pause music">🔊</button>
+
   <!-- Tombol Kembali (di luar section pembuka) -->
   <button id="backButton" class="btn back-btn hidden">← Kembali</button>
 

@@ -27,6 +27,8 @@ document.getElementById('toSurprise').onclick = () => {
   showSection('surprise');
   burstConfetti();
   startHearts();
+  // Try to start background music on user gesture when showing surprise
+  if (typeof setMusicState === 'function') setMusicState(true);
 };
 
 // 📸 Slideshow
@@ -74,6 +76,71 @@ if (backButton) {
     const currentIndex = secList.findIndex(s => s.classList.contains('active'));
     if (currentIndex > 0) showSection(secList[currentIndex - 1].id);
   });
+}
+
+// ===== Background music controls =====
+const bgAudio = document.getElementById('bgAudio');
+const musicToggle = document.getElementById('musicToggle');
+
+function setMusicState(play) {
+  if (!bgAudio || !musicToggle) return;
+  if (play) {
+    // Ensure reasonable volume and unmuted
+    try { bgAudio.muted = false; } catch (e) {}
+    try { bgAudio.volume = 0.8; } catch (e) {}
+
+    const p = bgAudio.play();
+    if (p && p.catch) p.catch(err => {
+      // Autoplay or other playback error — surface to console and update UI hint
+      console.error('bgAudio.play() failed:', err);
+      musicToggle.setAttribute('aria-pressed', 'false');
+      musicToggle.textContent = '🔊';
+      musicToggle.title = 'Autoplay blocked — tap to play';
+      return;
+    });
+    musicToggle.setAttribute('aria-pressed', 'true');
+    musicToggle.textContent = '🔈';
+  } else {
+    bgAudio.pause();
+    musicToggle.setAttribute('aria-pressed', 'false');
+    musicToggle.textContent = '🔊';
+  }
+}
+
+if (musicToggle) {
+  musicToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (!bgAudio) return;
+    setMusicState(bgAudio.paused);
+  });
+}
+
+// Try to start playback on load. Because browsers block audible autoplay,
+// the audio element is started muted (see index.html). We then listen for the
+// first user interaction and unmute so the music becomes audible.
+if (bgAudio) {
+  // Ensure loop and initial muted state
+  try { bgAudio.loop = true; } catch (e) {}
+  try { bgAudio.muted = true; } catch (e) {}
+  // Start playback (muted autoplay should succeed in most browsers)
+  const p = bgAudio.play();
+  if (p && p.catch) p.catch(err => {
+    // If even muted autoplay fails, log for debugging
+    console.warn('Muted autoplay failed:', err);
+  });
+
+  // One-time listener to unmute on first user gesture (pointerdown covers touch/click)
+  function unmuteOnGesture() {
+    try { bgAudio.muted = false; bgAudio.volume = 0.8; } catch (e) {}
+    // update UI
+    if (musicToggle) {
+      musicToggle.setAttribute('aria-pressed', 'true');
+      musicToggle.textContent = '🔈';
+    }
+    // remove listener after unmuting
+    window.removeEventListener('pointerdown', unmuteOnGesture);
+  }
+  window.addEventListener('pointerdown', unmuteOnGesture, { once: true });
 }
 
 // 💌 Secret Message
